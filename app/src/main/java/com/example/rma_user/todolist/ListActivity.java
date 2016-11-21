@@ -18,8 +18,6 @@ public class ListActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, R.layout.list_item, data);
 
-        //komentar sad dodat
-
         listView.setAdapter(adapter);
     }
 }
