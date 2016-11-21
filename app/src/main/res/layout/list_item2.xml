@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/textViewItemName" />
+
+    <CheckBox
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewItemName"
+        android:layout_alignLeft="@+id/textViewItemName"
+        android:layout_alignStart="@+id/textViewItemName"
+        android:layout_marginTop="17dp"
+        android:id="@+id/checkBoxDone" />
+
+    <TextView
+        android:text="Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxDone"
+        android:layout_toRightOf="@+id/textViewItemName"
+        android:layout_toEndOf="@+id/textViewItemName"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textViewDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewDate"
+        android:layout_alignRight="@+id/checkBoxDone"
+        android:layout_alignEnd="@+id/checkBoxDone"
+        android:id="@+id/textViewDateTime" />
+</RelativeLayout>
