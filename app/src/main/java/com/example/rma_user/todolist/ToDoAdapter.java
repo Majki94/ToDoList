@@ -46,12 +46,11 @@ public class ToDoAdapter extends BaseAdapter {
 
         TextView textViewItemName = (TextView) convertView.findViewById(R.id.textViewItemName);
         CheckBox done = (CheckBox) convertView.findViewById(R.id.checkBoxDone);
-        TextView textViewDateTime = (TextView) convertView.findViewById(R.id.textViewDateAndTime);
+        TextView textViewDateTime = (TextView) convertView.findViewById(R.id.textViewDateTime);
 
         textViewItemName.setText(data.get(position).getItem());
         done.setChecked(data.get(position).isStatus());
         textViewDateTime.setText(data.get(position).getDate() + " " + data.get(position).getTime());
-
 
 
         return convertView;
