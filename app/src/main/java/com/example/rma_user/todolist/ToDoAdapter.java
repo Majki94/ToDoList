@@ -4,19 +4,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.List;
+
 /**
  * Created by rma-user on 11/21/16.
  */
 
 public class ToDoAdapter extends BaseAdapter {
+
+    List<Item> data;
+
+    public ToDoAdapter(List<Item> data) {
+        this.data = data;
+    }
+
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return data.get(position);
     }
 
     @Override
