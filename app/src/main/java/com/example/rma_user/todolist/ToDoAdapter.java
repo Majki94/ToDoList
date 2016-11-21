@@ -44,6 +44,7 @@ public class ToDoAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.list_item2, parent, false);
         }
 
+
         TextView textViewItemName = (TextView) convertView.findViewById(R.id.textViewItemName);
         CheckBox done = (CheckBox) convertView.findViewById(R.id.checkBoxDone);
         TextView textViewDateTime = (TextView) convertView.findViewById(R.id.textViewDateTime);
