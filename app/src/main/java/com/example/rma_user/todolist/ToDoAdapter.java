@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,27 +34,42 @@ public class ToDoAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
+        CheckBox checkBoxDone;
 
         if(convertView == null){
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             convertView = inflater.inflate(R.layout.list_item2, parent, false);
+            checkBoxDone = (CheckBox) convertView.findViewById(R.id.checkBoxDone);
+            checkBoxDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    data.get((Integer) buttonView.getTag()).setStatus(isChecked);
+                }
+            });
         }
 
 
         TextView textViewItemName = (TextView) convertView.findViewById(R.id.textViewItemName);
-        CheckBox done = (CheckBox) convertView.findViewById(R.id.checkBoxDone);
+        checkBoxDone = (CheckBox) convertView.findViewById(R.id.checkBoxDone);
         TextView textViewDateTime = (TextView) convertView.findViewById(R.id.textViewDateTime);
 
         textViewItemName.setText(data.get(position).getItem());
-        done.setChecked(data.get(position).isStatus());
+        checkBoxDone.setTag(position);
+        checkBoxDone.setChecked(data.get(position).isStatus());
         textViewDateTime.setText(data.get(position).getDate() + " " + data.get(position).getTime());
 
 
         return convertView;
+    }
+
+    public void clear(){
+        data.clear();
+        notifyDataSetChanged();
     }
 }

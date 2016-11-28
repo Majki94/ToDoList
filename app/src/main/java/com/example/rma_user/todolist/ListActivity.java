@@ -2,6 +2,9 @@ package com.example.rma_user.todolist;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
 
     String[] data = new String[]{"green", "blue", "red"};
+    ToDoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +31,38 @@ public class ListActivity extends AppCompatActivity {
         list.add(item);
         list.add(item2);
 
-        ToDoAdapter adapter = new ToDoAdapter(list);
+        adapter = new ToDoAdapter(list);
 
         listView.setAdapter(adapter);
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        for (int i=0; i<adapter.getCount(); i++){
+            System.out.println(((Item)adapter.getItem(i)).isStatus());
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mymenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                return true;
+            case R.id.delete:
+                adapter.clear();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
